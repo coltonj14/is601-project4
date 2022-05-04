@@ -55,7 +55,8 @@ class Transactions(db.Model):
     __tablename__ = 'transactions'
     id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Integer, nullable=True, unique=False)
-    type =  db.Column(db.String(300), nullable=True, unique=False)
+    type = db.Column(db.String(300), nullable=True, unique=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __init__(self, amount, type):
         self.type = type
