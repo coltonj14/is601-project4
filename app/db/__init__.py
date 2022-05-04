@@ -1,3 +1,4 @@
+import click
 from flask import Blueprint, cli
 from flask_sqlalchemy import SQLAlchemy
 
