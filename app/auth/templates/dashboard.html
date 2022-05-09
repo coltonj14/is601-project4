@@ -8,15 +8,15 @@
     <h1>Dashboard</h1>
     <h2>Welcome: {{ current_user.email }}</h2>
     <p>
-        Please see your song list below, if you would like to manage your song list go to My Account->
-        Song Mgmt. Otherwise you can upload songs with the button on the page! Enjoy.
+        Please see your transaction list and total below, if you would like to manage your song list go to My Account->
+        Transaction Mgmt. Otherwise, you can upload songs with the button on the page! Enjoy.
 
     </p>
     <br>
 
     <a href="{{ url_for("transactions.transactions_upload") }}" class="btn col-3 mb-5 btn-info" role="button">Upload Transactions</a>
 
-        <h2>Current Songs</h2>
+        <h2>Current Transactions</h2>
         {{ render_table(data) }}
         {% from 'bootstrap5/pagination.html' import render_pagination %}
 

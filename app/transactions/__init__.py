@@ -23,7 +23,7 @@ def transactions_browse(page):
     pagination = Transactions.query.paginate(page, per_page, error_out=False)
     data = pagination.items
     try:
-        return render_template('browse_songs.html',data=data,pagination=pagination)
+        return render_template('browse_transactions.html',data=data,pagination=pagination)
     except TemplateNotFound:
         abort(404)
 
@@ -47,6 +47,7 @@ def transactions_upload():
         current_user.transactions = list_of_transactions
         log.info("Uploaded CSV successfully")
         log.info(filename)
+        log.info(current_user.transactions)
         db.session.commit()
 
         return redirect(url_for('auth.dashboard'))
