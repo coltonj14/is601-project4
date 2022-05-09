@@ -2,21 +2,14 @@
 {% from 'bootstrap5/table.html' import render_table %}
 {% from "bootstrap5/pagination.html" import render_pagination %}
 
-{% block content %}
-    {% from 'bootstrap5/form.html' import render_form, render_field, render_form_row %}
-    <div id="row">
-    <h1>Dashboard</h1>
-    <h2>Welcome: {{ current_user.email }}</h2>
-    <p>
-        Please see your song list below, if you would like to manage your song list go to My Account->
-        Song Mgmt. Otherwise you can upload songs with the button on the page! Enjoy.
 
-    </p>
-    <br>
+<div class="row col-8">
+    {% block title %}Browse: {{ record_type }}{% endblock %}
+    {% block content %}
 
-    <a href="{{ url_for("transactions.transactions_upload") }}" class="btn col-3 mb-5 btn-info" role="button">Upload Transactions</a>
+        <a href="{{ url_for("transactions.transactions_upload") }}" class="btn col-3 mb-5 btn-info" role="button">Upload Transactions</a>
 
-        <h2>Current Songs</h2>
+        <h2>Browse: Transactions</h2>
         {{ render_table(data) }}
         {% from 'bootstrap5/pagination.html' import render_pagination %}
 
@@ -30,5 +23,10 @@
             });
         </script>
 
-    </div>
-{% endblock %}
+
+
+    {% endblock %}
+</div>
+
+
+

@@ -8,6 +8,7 @@ from app.auth.forms import login_form, register_form, profile_form, security_for
 from app.db import db
 from app.db.models import User
 from app.db.models import Song
+from app.db.models import Transactions
 
 auth = Blueprint('auth', __name__, template_folder='templates')
 
@@ -65,14 +66,14 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
-#@songs.route('/songs', methods=['GET'], defaults={"page": 1})
-#@songs.route('/songs/<int:page>', methods=['GET'])
+#@transactions.route('/transactions', methods=['GET'], defaults={"page": 1})
+#@transactions.route('/transactions/<int:page>', methods=['GET'])
 @auth.route('/dashboard', methods=['GET'], defaults={"page": 1})
 @login_required
 def dashboard(page):
     page = page
     per_page = 1000
-    pagination = Song.query.paginate(page, per_page, error_out=False)
+    pagination = Transactions.query.paginate(page, per_page, error_out=False)
     data = pagination.items
     try:
         return render_template('dashboard.html', data=data, pagination=pagination)
