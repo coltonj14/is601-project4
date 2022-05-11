@@ -1,10 +1,10 @@
 # Project Setup
 
-[![Production Workflow 1](https://github.com/coltonj14/IS601-project3/actions/workflows/prod.yml/badge.svg)](https://github.com/coltonj14/IS601-project3/actions/workflows/prod.yml)
+[![Production Workflow 1](https://github.com/coltonj14/is601-project4/actions/workflows/prod.yml/badge.svg)](https://github.com/coltonj14/is601-project4/actions/workflows/prod.yml)
 * [Production Deployment](https://cj236-project4-prod.herokuapp.com/)
 
 
-[![Development Workflow 3.8](https://github.com/coltonj14/IS601-project3/actions/workflows/dev.yml/badge.svg)](https://github.com/coltonj14/IS601-project3/actions/workflows/dev.yml)
+[![Development Workflow 3.8](https://github.com/coltonj14/is601-project4/actions/workflows/dev.yml/badge.svg)](https://github.com/coltonj14/is601-project4/actions/workflows/dev.yml)
 * [Developmental Deployment](https://cj236-project4-dev.herokuapp.com/)
 
 ## Setting up CI/CD
