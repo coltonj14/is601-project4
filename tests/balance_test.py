@@ -14,6 +14,7 @@ def test_balance_none(application, client):
 
         print(user.balance)
         assert user.balance == None
+        db.delete(user)
 
 
 

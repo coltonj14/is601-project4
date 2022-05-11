@@ -45,6 +45,14 @@ def test_request_register(client):
     assert b"register" in response.data
 
 
+def test_request_dashboard(client):
+    """This makes the index page"""
+    response = client.get("/dashboard", follow_redirects=True)
+    assert response.status_code == 200
+    assert b"Welcome" in response.data
+
+
+
 def test_request_page_not_found(client):
     """This makes the index page"""
     response = client.get("/page5")
