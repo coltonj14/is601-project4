@@ -1,27 +1,24 @@
-"""This makes the test configuration setup"""
-# pylint: disable=redefined-outer-name
+# project/tests/test_config.py
+import logging
+import os
 
-import pytest
-from app import create_app
-
-
-@pytest.fixture()
-def application():
-    """This makes the app"""
-    application = create_app()
-    application.config.update({
-        "TESTING": True,
-    })
-    yield application
+import app.config
 
 
-@pytest.fixture()
-def client(application):
-    """This makes the http client"""
-    return application.test_client()
+def test_development_config(application):
+    application.config.from_object('app.config.DevelopmentConfig')
 
+    assert application.config['DEBUG']
+    assert not application.config['TESTING']
 
-@pytest.fixture()
-def runner(application):
-    """This makes the task runner"""
-    return application.test_cli_runner()
+def test_testing_config(application):
+    application.config.from_object('app.config.TestingConfig')
+    assert application.config['DEBUG']
+    assert application.config['TESTING']
+    assert not application.config['PRESERVE_CONTEXT_ON_EXCEPTION']
+    assert application.config['SQLALCHEMY_DATABASE_URI'] == 'sqlite:///:memory:'
+
+def test_production_config(application):
+    application.config.from_object('app.config.ProductionConfig')
+    assert not application.config['DEBUG']
+    assert not application.config['TESTING']
