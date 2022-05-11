@@ -35,3 +35,12 @@ def test_login(application, client):
         assert b"cj236" in dres.data
 
         db.session.delete(user)
+
+
+def test_registration(client):
+    """Test if a user logs in that it redirects to login page"""
+    with client:
+        res = client.post('/register', data=dict(email="test@gmail.com", password='test'), follow_redirects=True)
+        print(res.data)
+        assert res.status_code == 200
+        assert b'href="/login"' in res.data
