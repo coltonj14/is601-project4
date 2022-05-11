@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <article class="col-8 lh-lg fs-5">
+
+            <h1>Index Page</h1>
+            <p>
+                Welcome to the song management project for Colton Johnson. In order to access the
+                functionality of this project a user needs to register through the authentication system
+                of this web app. It will then redirect a user to the login page where they can log in.
+                If you already have an account you can quickly log in through this page.
+            </p><br>
+
+            <p>
+                This application works with technologies that inlcude Flask, Python, sqllite, javascript,
+                HTML, Pytest, etc. All of these technolgies come together to help form this application.
+            </p>
+        </article>
+        {% if current_user.is_authenticated == false %}
+            <aside class="col-4">
+                <h2>Login</h2>
+                <form action="{{ url_for('auth.login') }}" method=post>
+                    <dl>
+                        {{ form.csrf_token }}
+                        {{ render_field(form.email) }}
+                        {{ render_field(form.password) }}
+                    </dl>
+                    <p><input type=submit value=Login>
+                </form>
+            </aside>
+        {% endif %}
+
+    </div>
+{% endblock %}
+</article>
